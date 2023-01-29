@@ -1296,7 +1296,7 @@ GameObject:
   - component: {fileID: 3042666065658653393}
   - component: {fileID: 3042666065658653392}
   m_Layer: 0
-  m_Name: barbarian_;player
+  m_Name: barbarian_player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -302,6 +302,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3042666065658653392, guid: fe611340f529e534a91ade1f9f036206, type: 3}
+      propertyPath: moveSpeed
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 3126809965762581971, guid: fe611340f529e534a91ade1f9f036206, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -348,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3129277840959727247, guid: fe611340f529e534a91ade1f9f036206, type: 3}
       propertyPath: m_Name
-      value: barbarian_;player
+      value: barbarian_player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe611340f529e534a91ade1f9f036206, type: 3}
