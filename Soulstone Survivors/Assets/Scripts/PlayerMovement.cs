@@ -25,6 +25,38 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
+    //private void OnAnimatorMove()
+    //{
+    //    Debug.Log(Time.time);
+
+    //    var forward = Camera.main.transform.forward;
+    //    forward.y = 0f;
+    //    forward.Normalize();
+
+    //    var right = Camera.main.transform.right;
+    //    right.y = 0f;
+    //    right.Normalize();
+
+    //    var dir = forward * playerInput.moveV;
+    //    dir += right * playerInput.moveH;
+
+    //    if (dir.magnitude > 1f)
+    //    {
+    //        dir.Normalize();
+    //    }
+
+    //    var localDir = transform.InverseTransformDirection(dir);
+    //    playerAnimator.SetFloat("SidewaysMovement", localDir.x);
+    //    playerAnimator.SetFloat("ForwardMovement", localDir.z);
+    //    localDir *= moveSpeed * Time.fixedDeltaTime;
+    //    var temp = localDir;
+    //    localDir *= moveSpeed * Time.fixedDeltaTime;
+    //    localDir -= temp;
+    //    transform.Translate(localDir);
+
+
+
+    //}
     private void Move()
     {
         var forward = Camera.main.transform.forward;
@@ -53,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
        // Debug.Log(localDir);
         localDir -= temp;
         transform.Translate(localDir);
-        Debug.Log(localDir);
+       // Debug.Log(localDir);
         //if (localDir.x > 1f)
         //{
         //    var x = localDir;
