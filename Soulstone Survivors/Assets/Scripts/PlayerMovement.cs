@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput playerInput;
     public Rigidbody playerRigidbody;
     private Animator playerAnimator;
+
+    public GameObject DashEffect;
+
     private Animation playerAnimation;
     void Start()
     {
@@ -150,7 +153,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash()
     {
+
+        Debug.Log(playerInput.dash);
         if (playerInput.dash)
-            playerAnimator.SetBool("Dash", true);
+            DashEffect.SetActive(true);
+            //playerAnimator.SetBool("Dash", true);
     }
 }
+  

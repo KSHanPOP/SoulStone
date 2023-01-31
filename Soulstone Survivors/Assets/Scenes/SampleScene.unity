@@ -580,6 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 55
   playerRigidbody: {fileID: 0}
+  DashEffect: {fileID: 768211471}
 --- !u!114 &258700862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,7 +633,7 @@ Transform:
   - {fileID: 516587466}
   - {fileID: 1184961281}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!1 &264393712
 GameObject:
@@ -12842,7 +12843,7 @@ Transform:
   - {fileID: 4049563755179826}
   - {fileID: 4040597390568091}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!4 &4215284610728149
 Transform:
@@ -13526,7 +13527,7 @@ Transform:
   - {fileID: 4805251889938662}
   - {fileID: 4672829694131830}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!114 &4452781179077880
 MonoBehaviour:
@@ -15977,6 +15978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 55
   playerRigidbody: {fileID: 0}
+  DashEffect: {fileID: 0}
 --- !u!136 &95350152963243000
 CapsuleCollider:
   m_ObjectHideFlags: 0
