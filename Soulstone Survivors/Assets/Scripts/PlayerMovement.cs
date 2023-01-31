@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Rotate();
         Move();
+        Dash();
     }
 
     //private void OnAnimatorMove()
@@ -82,10 +83,10 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.SetFloat("ForwardMovement", localDir.z);
         var temp = localDir;
         localDir *= moveSpeed * Time.fixedDeltaTime;
-       // Debug.Log(localDir);
+        // Debug.Log(localDir);
         localDir -= temp;
         transform.Translate(localDir);
-       // Debug.Log(localDir);
+        // Debug.Log(localDir);
         //if (localDir.x > 1f)
         //{
         //    var x = localDir;
@@ -145,5 +146,11 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation = Quaternion.LookRotation(forward);
         }
+    }
+
+    private void Dash()
+    {
+        if (playerInput.dash)
+            playerAnimator.SetBool("Dash", true);
     }
 }

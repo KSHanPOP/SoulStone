@@ -52,7 +52,6 @@ public class Enemy : LivingEntity
             {
                 navMeshAgent.isStopped = false;
                 navMeshAgent.SetDestination(player.transform.position);
-                Debug.Log(navMeshAgent.updateUpAxis);
             }
             else
             {
