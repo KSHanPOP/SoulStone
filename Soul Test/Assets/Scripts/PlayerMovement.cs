@@ -1,20 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 55f;
-    public float dashSpeed = 0f;
-    private bool isDash = false;
+    public float moveSpeed = 100f;
 
     private PlayerInput playerInput;
     public Rigidbody playerRigidbody;
     private Animator playerAnimator;
-
-    private Vector3 inputMove;
-
     private Animation playerAnimation;
     void Start()
     {
@@ -27,14 +21,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        Move();
-        if (playerInput.dash && !isDash)
-        {
-            StartCoroutine(Dashing());
-        }
-
         Rotate();
+        Move();
+        Dash();
     }
 
     //private void OnAnimatorMove()
@@ -79,18 +68,10 @@ public class PlayerMovement : MonoBehaviour
         right.y = 0f;
         right.Normalize();
 
-        var dir = new Vector3();
+        var dir = forward * playerInput.moveV;
+        dir += right * playerInput.moveH;
 
-        if (!playerInput.dash)
-        {
-            dir = forward * playerInput.moveV;
-            dir += right * playerInput.moveH;
-        }
-        else
-        {
-            dir = forward * inputMove.x;
-            dir += right * inputMove.z;
-        }
+
 
         if (dir.magnitude > 1f)
         {
@@ -101,10 +82,10 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.SetFloat("SidewaysMovement", localDir.x);
         playerAnimator.SetFloat("ForwardMovement", localDir.z);
         var temp = localDir;
-        localDir *= (moveSpeed + dashSpeed) * Time.fixedDeltaTime;
+        localDir *= moveSpeed * Time.fixedDeltaTime;
+        // Debug.Log(localDir);
         localDir -= temp;
         transform.Translate(localDir);
-
         // Debug.Log(localDir);
         //if (localDir.x > 1f)
         //{
@@ -169,25 +150,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash()
     {
-
         if (playerInput.dash)
-        {
-            StartCoroutine(Dashing());
-        }
-    }
-
-    IEnumerator Dashing()
-    {
-        isDash = true;
-        GetComponent<SkinnedMeshAfterImage>().enabled = true;
-        dashSpeed = 30f;
-        inputMove.x = playerInput.moveV;
-        inputMove.z = playerInput.moveH;
-
-        yield return new WaitForSecondsRealtime(0.2f);
-        isDash = false;
-        GetComponent<SkinnedMeshAfterImage>().enabled = false;
-        dashSpeed = 0f;
-        playerInput.dash = false;
+            playerAnimator.SetBool("Dash", true);
     }
 }

@@ -11,7 +11,7 @@ public class PlayerInput : MonoBehaviour
 
     public float moveV { get; private set; }
     public float moveH { get; private set; }
-    public bool dash { get; set; }
+    public bool dash { get; private set; }
     public Vector3 mousePos { get; private set; }
 
 
@@ -19,11 +19,7 @@ public class PlayerInput : MonoBehaviour
     {
         moveV = Input.GetAxisRaw(movevAxisName);
         moveH = Input.GetAxisRaw(moveHAxisName);
+        dash = Input.GetButton(dashName);
         mousePos = Input.mousePosition;
-
-        if (!dash)
-        {
-            dash = Input.GetButton(dashName);
-        }
     }
 }
