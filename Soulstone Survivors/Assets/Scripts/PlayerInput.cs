@@ -21,5 +21,8 @@ public class PlayerInput : MonoBehaviour
         moveH = Input.GetAxisRaw(moveHAxisName);
         dash = Input.GetButton(dashName);
         mousePos = Input.mousePosition;
+
+
+
     }
 }
