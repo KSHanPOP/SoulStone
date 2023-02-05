@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Grass
+  m_Shader: {fileID: 4800000, guid: ac513837f92f0b7408bb9410adb8ca9a, type: 3}
+  m_ShaderKeywords:
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Mask_R_Emission:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cure_Aura_Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Emission_Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _XP_Aura_Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Brightness_Rim: 0.5
+    - Dissolve_Death: -2
+    - Rim_Power: 0
+    - Toon_Ramp_Offset: 0.5
+    - Toon_Ramp_Smoothness: 0.5
+    - Vector1_2A455339: 1
+    - Vector1_33a79f2ace714fbcae2c42119d306f9f: 0
+    - Vector1_5A9E5888: 0
+    - Vector1_66aeaf801dfb4878918da9c26259b060: 0
+    - Vector1_674aeba9f5054b0da15cf6e914ee2479: 5
+    - Vector1_9fd4e4e6ef224b42be0704002bc04c55: -1
+    - Vector1_CD9CB9E8: 0
+    - Vector1_F5DCAAE8: 0
+    - Vector1_d78c8707cb4e440daef17934184e2e3c: 0
+    - _AO: 0.8
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
+    - _Color_Damage_controle: 0
+    - _Color_Tint: 1
+    - _Cull: 2
+    - _Cure_Aura_Power: 0
+    - _Cutoff: 0.5
+    - _Damage_Power: 0
+    - _DetailAlbedoMapScale: 1
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _Edge_Power: 5
+    - _EmissionScaleUI: 1
+    - _Emission_Power: 0
+    - _EnvironmentReflections: 1
+    - _Float: 0
+    - _Float_1: 0.23
+    - _Float_2: 1
+    - _Float_3: 1
+    - _Float_4: 0
+    - _Fresnel_Power: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.2
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _Power_Aura_Power: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Saturation: 1
+    - _ShadowPower: 1
+    - _Smoothness: 0
+    - _SmoothnessTextureChannel: 0
+    - _Specular: 0.2
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Strength: 0.3
+    - _Surface: 0
+    - _Toon_Ramp_Offset: 0.5
+    - _Toon_Ramp_Smoothness: 0.5
+    - _UVSec: 0
+    - _WorkflowMode: 1
+    - _XP_Aura_Power: 0
+    - _ZWrite: 1
+    m_Colors:
+    - Aura_Speed: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FA669E8D: {r: 1, g: 1, b: 1, a: 0}
+    - Color_b493f378ed39440e8e481a98b9bc5076: {r: 0, g: 0, b: 0, a: 1}
+    - Color_e15b25c9b8e6499bae85248307e6dcf9: {r: 2, g: 0.696271, b: 0, a: 0}
+    - Cure_Speed: {r: 0, g: 0, b: 0, a: 0}
+    - Texture_Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - Toon_Ramp_Tint: {r: 1, g: 0.8836478, b: 0.8836478, a: 1}
+    - Vector2_43ea528583964bfbb818078a597cd4d4: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_5cc9ec8f76f948eab1452ca2c4d01060: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_7adb351140ff4d32972d9805e5aef77f: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_b4bb9edeb256422d9085c41869d6cd3f: {r: 1, g: 1, b: 0, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.2889385, g: 0.3490566, b: 0.1536727, a: 1}
+    - _Color_1: {r: 0.9150943, g: 0.5927969, b: 0.5927969, a: 0}
+    - _Color_2: {r: 1, g: 0.8930817, b: 0.8930817, a: 0}
+    - _Color_Damage: {r: 1, g: 0, b: 0, a: 1}
+    - _Color_Fresnel: {r: 1, g: 0.7814316, b: 0.03459108, a: 0}
+    - _Color_Fresnel_1: {r: 1, g: 0.7814316, b: 0.03459108, a: 0}
+    - _Cure_Aura_Color: {r: 0.3574302, g: 0.8773585, b: 0.02207184, a: 0}
+    - _Damage_Color: {r: 1, g: 0.02912555, b: 0, a: 0}
+    - _EmissionColor: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
+    - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
+    - _Emission_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Emisson_Speed: {r: 0, g: 0, b: 0, a: 0}
+    - _Power_Aura_Color: {r: 1, g: 0.02912555, b: 0, a: 0}
+    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _Specular_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0}
+    - _XP_Aura_Color: {r: 0.27044016, g: 0.47561044, b: 1, a: 0}
+  m_BuildTextureStacks: []
