@@ -25,6 +25,8 @@ public class NPCController : MonoBehaviour
     public float idleTime = 1f;
     public float chaseInterval = 0.25f;
     private float timer = 0f;
+    private float AttIdleTime = 0f;
+
 
     private States state = States.None;
 
@@ -112,7 +114,7 @@ public class NPCController : MonoBehaviour
         if (States.Chase == state)
             animator.SetFloat("Forward", agent.velocity.magnitude);
 
-        // Debug.Log(state);
+        Debug.Log(state);
     }
 
     private void UpdateChase()
@@ -129,6 +131,7 @@ public class NPCController : MonoBehaviour
         if (timer > chaseInterval)
         {
             agent.SetDestination(player.position);
+            animator.SetBool("AttackIdle", false);
             timer = 0f;
         }
     }
@@ -148,32 +151,34 @@ public class NPCController : MonoBehaviour
 
     private void UpdateAttack()
     {
-        timer += Time.deltaTime;
+        AttIdleTime += Time.fixedDeltaTime;
 
-        if (distanceToPlayer > attackDef.range && timer > attackDef.coolDown)
+        if (animator.GetBool("AttackIdle") && AttIdleTime > attackDef.coolDown)
         {
-            State = States.Chase;
-            animator.SetBool("AttackIdle", false);
-            animator.SetTrigger("Chase");
+            distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            AttIdleTime = 0f;
 
-            return;
-        }
+            if (distanceToPlayer > attackDef.range)
+            {
+                State = States.Chase;
+                animator.SetTrigger("Chase");
 
-        if (timer > attackDef.coolDown)
-        {
-            animator.SetBool("AttackIdle", false);
+                return;
+            }
+            else
+            {
+                animator.SetBool("AttackIdle", false);
+            }
+
         }
 
         if (!animator.GetBool("AttackIdle"))
         {
-            timer = 0f;
-
             var lookPos = player.position;
             lookPos.y = transform.position.y;
             transform.LookAt(lookPos);
 
             animator.SetTrigger("ExecuteAttack");
-            distanceToPlayer = Vector3.Distance(transform.position, player.position);
         }
     }
     public void Hit()
