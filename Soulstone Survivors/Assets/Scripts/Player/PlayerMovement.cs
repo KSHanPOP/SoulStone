@@ -5,8 +5,9 @@ using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 55f;
-    public float dashSpeed = 0f;
+    public float moveSpeed = 300f;
+    private float dashSpeed = 1f;
+    public float maxDash = 5f;
     private bool isDash = false;
 
     private PlayerInput playerInput;
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         // playerRigidbody = GetComponentInChildren<Rigidbody>();
-        //playerRigidbody = GetComponent<Rigidbody>();
+        playerRigidbody = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
         playerAnimation = GetComponent<Animation>();
     }
@@ -101,9 +102,13 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.SetFloat("SidewaysMovement", localDir.x);
         playerAnimator.SetFloat("ForwardMovement", localDir.z);
         var temp = localDir;
-        localDir *= (moveSpeed + dashSpeed) * Time.fixedDeltaTime;
-        localDir -= temp;
-        transform.Translate(localDir);
+        dir *= (moveSpeed ) * Time.fixedDeltaTime*dashSpeed;
+        //playerRigidbody.AddForce(dir);
+      playerRigidbody.velocity= dir;
+        Debug.Log(dir);
+        //localDir -= temp;
+
+        //transform.Translate(localDir);
 
         // Debug.Log(localDir);
         //if (localDir.x > 1f)
@@ -180,14 +185,14 @@ public class PlayerMovement : MonoBehaviour
     {
         isDash = true;
         GetComponent<SkinnedMeshAfterImage>().enabled = true;
-        dashSpeed = 30f;
+        dashSpeed = maxDash;
         inputMove.x = playerInput.moveV;
         inputMove.z = playerInput.moveH;
 
         yield return new WaitForSecondsRealtime(0.2f);
         isDash = false;
         GetComponent<SkinnedMeshAfterImage>().enabled = false;
-        dashSpeed = 0f;
+        dashSpeed = 1f;
         playerInput.dash = false;
     }
 }

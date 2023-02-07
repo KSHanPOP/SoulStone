@@ -534,9 +534,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.23297992
-  m_Height: 1.7948946
+  m_Height: 1.6388301
   m_Direction: 1
-  m_Center: {x: 0.008344433, y: 1.0266014, z: 0}
+  m_Center: {x: 0.008344433, y: 0.8033892, z: 0}
 --- !u!114 &258700859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,8 +559,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258700857}
   serializedVersion: 2
-  m_Mass: 1000
-  m_Drag: 100
+  m_Mass: 10
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -579,8 +579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8fff29eb4edc24cb06b25bf340f6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 55
-  dashSpeed: 0
+  moveSpeed: 300
+  maxDash: 5
   playerRigidbody: {fileID: 0}
 --- !u!114 &258700862
 MonoBehaviour:
@@ -15196,7 +15196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 55
-  dashSpeed: 0
+  maxDash: 100
   playerRigidbody: {fileID: 0}
 --- !u!136 &95350152963243000
 CapsuleCollider:
@@ -62955,7 +62955,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3540201e3dd5f31498eebbaa20796e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 6742083600221356682}
 --- !u!4 &6745265578127846791
 Transform:
   m_ObjectHideFlags: 0

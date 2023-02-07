@@ -92,7 +92,7 @@ public class NPCController : MonoBehaviour
     private void Update()
     {
 
-        if (State != States.GameOver)
+        if (State == States.Chase)
         {
             distanceToPlayer = Vector3.Distance(transform.position, player.position);
         }
@@ -111,11 +111,14 @@ public class NPCController : MonoBehaviour
         }
         if (States.Chase == state)
             animator.SetFloat("Forward", agent.velocity.magnitude);
+
+        // Debug.Log(state);
     }
 
     private void UpdateChase()
     {
         timer += Time.deltaTime;
+        ///animator.SetBool("AttackIdle", false);
 
         if (distanceToPlayer < attackDef.range)
         {
@@ -147,12 +150,11 @@ public class NPCController : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-       
-
-        if (distanceToPlayer > attackDef.range)
+        if (distanceToPlayer > attackDef.range && timer > attackDef.coolDown)
         {
             State = States.Chase;
             animator.SetBool("AttackIdle", false);
+            animator.SetTrigger("Chase");
 
             return;
         }
@@ -162,11 +164,7 @@ public class NPCController : MonoBehaviour
             animator.SetBool("AttackIdle", false);
         }
 
-        if (animator.GetBool("AttackIdle"))
-        {
-            return;
-        }
-        else
+        if (!animator.GetBool("AttackIdle"))
         {
             timer = 0f;
 
@@ -175,6 +173,7 @@ public class NPCController : MonoBehaviour
             transform.LookAt(lookPos);
 
             animator.SetTrigger("ExecuteAttack");
+            distanceToPlayer = Vector3.Distance(transform.position, player.position);
         }
     }
     public void Hit()

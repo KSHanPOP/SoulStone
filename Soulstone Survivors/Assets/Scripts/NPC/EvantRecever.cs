@@ -13,5 +13,6 @@ public class EvantRecever : MonoBehaviour
     void WolfAttackFinish()
     {
         animator.SetBool("AttackIdle", true);
+        //Debug.Log(animator.GetBool("AttackIdle"));
     }
 }
