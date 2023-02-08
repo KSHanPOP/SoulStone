@@ -514,6 +514,9 @@ GameObject:
   - component: {fileID: 258700861}
   - component: {fileID: 258700860}
   - component: {fileID: 258700859}
+  - component: {fileID: 258700866}
+  - component: {fileID: 258700867}
+  - component: {fileID: 258700868}
   - component: {fileID: 258700858}
   - component: {fileID: 258700865}
   m_Layer: 7
@@ -549,7 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0189a80c77806b4ea1822f8b995fd4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health_Max: 100
+  health_Max: 150
   hitEffect: {fileID: 0}
 --- !u!54 &258700860
 Rigidbody:
@@ -685,6 +688,48 @@ MonoBehaviour:
     shaderColorName: _Color
     shaderAlphaName: _Alpha
   _containChildrenMeshes: 1
+--- !u!114 &258700866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258700857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 705627d97b211d547819b0ea55a93bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 150
+  damage: 0
+  armor: 0
+  hp: 0
+--- !u!114 &258700867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258700857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6e5eb26403ff842884a728d0d13241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &258700868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258700857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7f25644d1609649a0b2edb7d4e6077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: 0
+  power: 50
 --- !u!1 &264393712
 GameObject:
   m_ObjectHideFlags: 0
@@ -60949,6 +60994,7 @@ GameObject:
   - component: {fileID: 6661678751625431638}
   - component: {fileID: 6854583668591788867}
   - component: {fileID: 6854583668591788868}
+  - component: {fileID: 6854583668591788869}
   m_Layer: 16
   m_Name: wolf
   m_TagString: Untagged
@@ -62955,6 +63001,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3540201e3dd5f31498eebbaa20796e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 6742083600221356682}
+  parentScript: {fileID: 0}
 --- !u!4 &6745265578127846791
 Transform:
   m_ObjectHideFlags: 0
@@ -63110,6 +63158,22 @@ MonoBehaviour:
   chaseInterval: 0.25
   attackDef: {fileID: 11400000, guid: 9f7a1d973f223af438c90e1924687a4b, type: 2}
   rightHand: {fileID: 0}
+--- !u!114 &6854583668591788869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6742083600221356682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 705627d97b211d547819b0ea55a93bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 0
+  damage: 0
+  armor: 0
+  hp: 0
 --- !u!198 &6857526200149487518
 ParticleSystem:
   m_ObjectHideFlags: 0

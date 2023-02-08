@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Attack.asset", menuName = "Attack/WolfBite")]
 public class WolfBite : AttackDefinition
 {
+    public GameObject prefab;
     public override void ExecuteAttack(GameObject attacker, GameObject defender)
     {
         if (defender == null)

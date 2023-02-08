@@ -26,7 +26,6 @@ public class NPCController : MonoBehaviour
     public float idleTime = 1f;
     public float chaseInterval = 0.25f;
     private float timer = 0f;
-    private float AttIdleTime = 0f;
 
 
     private States state = States.None;
@@ -91,7 +90,6 @@ public class NPCController : MonoBehaviour
     {
         State = States.Chase;
 
-        //State = States.Chase;
     }
 
     private void Update()
@@ -118,13 +116,12 @@ public class NPCController : MonoBehaviour
         if (States.Chase == state)
             animator.SetFloat("Forward", agent.velocity.magnitude);
 
-        Debug.Log(state);
+        //Debug.Log(state);
     }
 
     private void UpdateChase()
     {
         timer += Time.deltaTime;
-        ///animator.SetBool("AttackIdle", false);
 
         if (distanceToPlayer < attackDef.range)
         {
@@ -136,8 +133,6 @@ public class NPCController : MonoBehaviour
 
         if (timer > chaseInterval)
         {
-           // agent.enabled = true;
-
             agent.SetDestination(player.position);
             timer = 0f;
         }
@@ -151,8 +146,6 @@ public class NPCController : MonoBehaviour
 
         if (animator.GetBool("AttackIdle"))
         {
-            //agent.enabled = false;
-            //agent.isStopped = true;
             StartCoroutine(Waitting(1f));
             animator.SetBool("AttackIdle", false);
         }
@@ -173,10 +166,6 @@ public class NPCController : MonoBehaviour
             animator.SetBool("Attack", false);
         }
 
-
-
-
-
         ////////////////////////////////////////////////////////////////////////
         //AttIdleTime += Time.fixedDeltaTime;
 
@@ -189,14 +178,12 @@ public class NPCController : MonoBehaviour
         //    {
         //        State = States.Chase;
         //        animator.SetTrigger("Chase");
-
         //        return;
         //    }
         //    else
         //    {
         //        animator.SetBool("AttackIdle", false);
         //    }
-
         //}
 
         //if (!animator.GetBool("AttackIdle"))
@@ -217,8 +204,8 @@ public class NPCController : MonoBehaviour
 
         switch (attackDef)
         {
-            case Weapon weapon:
-                weapon.ExecuteAttack(gameObject, player.gameObject);
+            case WolfBite WolfBite:
+                WolfBite.ExecuteAttack(gameObject, player.gameObject);
                 break;
             case Spell spell:
                 var pos = player.transform.position;

@@ -103,8 +103,9 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.SetFloat("ForwardMovement", localDir.z);
         var temp = localDir;
         dir *= (moveSpeed) * Time.fixedDeltaTime * dashSpeed;
-        //playerRigidbody.AddForce(dir);
         playerRigidbody.velocity = dir;
+
+        //playerRigidbody.AddForce(dir);
        // Debug.Log(dir);
         //localDir -= temp;
 
@@ -172,17 +173,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Dash()
-    {
-
-        if (playerInput.dash)
-        {
-            StartCoroutine(Dashing());
-        }
-    }
-
     IEnumerator Dashing()
     {
+        playerAnimator.SetBool("OnGround", false);
+        //playerRigidbody.velocity = new Vector3(0f,10f,0f);
         isDash = true;
         GetComponent<SkinnedMeshAfterImage>().enabled = true;
         dashSpeed = maxDash;
@@ -191,6 +185,9 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.2f);
         isDash = false;
+        playerAnimator.SetBool("OnGround", true);
+        //playerRigidbody.velocity = new Vector3(0f, 100f, 0f);
+
         GetComponent<SkinnedMeshAfterImage>().enabled = false;
         dashSpeed = 1f;
         playerInput.dash = false;
