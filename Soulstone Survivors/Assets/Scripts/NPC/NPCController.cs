@@ -1,6 +1,7 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class NPCController : MonoBehaviour
 {
@@ -89,6 +90,8 @@ public class NPCController : MonoBehaviour
     private void Start()
     {
         State = States.Chase;
+
+        //State = States.Chase;
     }
 
     private void Update()
@@ -111,6 +114,7 @@ public class NPCController : MonoBehaviour
                 UpdateAttack();
                 break;
         }
+
         if (States.Chase == state)
             animator.SetFloat("Forward", agent.velocity.magnitude);
 
@@ -125,13 +129,16 @@ public class NPCController : MonoBehaviour
         if (distanceToPlayer < attackDef.range)
         {
             State = States.Attack;
+            timer = 0f;
+
             return;
         }
 
         if (timer > chaseInterval)
         {
+           // agent.enabled = true;
+
             agent.SetDestination(player.position);
-            animator.SetBool("AttackIdle", false);
             timer = 0f;
         }
     }
@@ -142,44 +149,67 @@ public class NPCController : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (distanceToPlayer < attackDef.range)
+        if (animator.GetBool("AttackIdle"))
         {
-            State = States.Chase;
-            return;
+            //agent.enabled = false;
+            //agent.isStopped = true;
+            StartCoroutine(Waitting(1f));
+            animator.SetBool("AttackIdle", false);
         }
+
     }
 
     private void UpdateAttack()
     {
-        AttIdleTime += Time.fixedDeltaTime;
-
-        if (animator.GetBool("AttackIdle") && AttIdleTime > attackDef.coolDown)
+        if (!animator.GetBool("Attack"))
         {
-            distanceToPlayer = Vector3.Distance(transform.position, player.position);
-            AttIdleTime = 0f;
-
-            if (distanceToPlayer > attackDef.range)
-            {
-                State = States.Chase;
-                animator.SetTrigger("Chase");
-
-                return;
-            }
-            else
-            {
-                animator.SetBool("AttackIdle", false);
-            }
-
+            animator.SetBool("Attack", true);
+            animator.SetFloat("Forward", 0f);
         }
 
-        if (!animator.GetBool("AttackIdle"))
+        if (animator.GetBool("AttackIdle"))
         {
-            var lookPos = player.position;
-            lookPos.y = transform.position.y;
-            transform.LookAt(lookPos);
-
-            animator.SetTrigger("ExecuteAttack");
+            State = States.Idle;
+            animator.SetBool("Attack", false);
         }
+
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////
+        //AttIdleTime += Time.fixedDeltaTime;
+
+        //if (animator.GetBool("AttackIdle") && AttIdleTime > attackDef.coolDown)
+        //{
+        //    distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        //    AttIdleTime = 0f;
+
+        //    if (distanceToPlayer > attackDef.range)
+        //    {
+        //        State = States.Chase;
+        //        animator.SetTrigger("Chase");
+
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        animator.SetBool("AttackIdle", false);
+        //    }
+
+        //}
+
+        //if (!animator.GetBool("AttackIdle"))
+        //{
+        //    var lookPos = player.position;
+        //    lookPos.y = transform.position.y;
+        //    transform.LookAt(lookPos);
+
+        //    animator.SetTrigger("ExecuteAttack");
+        //}
+
+        ////////////////////////////////////////////////////////////////////////
+
     }
     public void Hit()
     {
@@ -196,6 +226,23 @@ public class NPCController : MonoBehaviour
                 var layer = LayerMask.NameToLayer("EnemyProjectile");
                 spell.Cast(gameObject, rightHand.position, pos, layer);
                 break;
+        }
+    }
+
+
+    IEnumerator Waitting(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+
+        distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        if (distanceToPlayer > attackDef.range)
+        {
+            State = States.Chase;
+        }
+        else
+        {
+            State = States.Attack;
         }
     }
 }
