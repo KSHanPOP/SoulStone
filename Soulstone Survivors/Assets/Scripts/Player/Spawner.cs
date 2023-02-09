@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer > 0.2f)
+        if (timer > 1.2f)
         {
             timer = 0;
             Spawn();
@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
         // GetRandomPoint()
 
         // enemy.transform.position;
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 30; ++i)
         {
             if (GetRandomPoint(spawnPoint[Random.Range(1, spawnPoint.Length)].position, 1f, out RandomSpawnPoint) && RandomSpawnPoint != Vector3.zero)
             {

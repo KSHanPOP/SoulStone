@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 
 public class NPCController : MonoBehaviour
 {
@@ -115,7 +116,7 @@ public class NPCController : MonoBehaviour
         if (States.Chase == state)
             animator.SetFloat("Forward", agent.velocity.magnitude);
 
-        Debug.Log(state);
+        //Debug.Log(state);
     }
 
     private void UpdateChase()
@@ -234,5 +235,13 @@ public class NPCController : MonoBehaviour
         {
             State = States.Attack;
         }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (!collision.CompareTag("FireboltSkill"))
+            return;
+
+       // collision.GetComponent<FireboltSkill>().damage;
     }
 }
