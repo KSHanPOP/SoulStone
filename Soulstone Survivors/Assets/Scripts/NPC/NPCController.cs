@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
@@ -116,14 +115,15 @@ public class NPCController : MonoBehaviour
         if (States.Chase == state)
             animator.SetFloat("Forward", agent.velocity.magnitude);
 
-        //Debug.Log(state);
+        Debug.Log(state);
     }
 
     private void UpdateChase()
     {
         timer += Time.deltaTime;
 
-        if (distanceToPlayer < attackDef.range)
+        if(agent.remainingDistance< attackDef.range)
+       // if (distanceToPlayer < attackDef.range)
         {
             State = States.Attack;
             timer = 0f;
@@ -135,6 +135,8 @@ public class NPCController : MonoBehaviour
         {
             agent.SetDestination(player.position);
             timer = 0f;
+            return;
+
         }
     }
 

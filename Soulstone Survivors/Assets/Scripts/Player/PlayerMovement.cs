@@ -101,12 +101,15 @@ public class PlayerMovement : MonoBehaviour
         var localDir = transform.InverseTransformDirection(dir);
         playerAnimator.SetFloat("SidewaysMovement", localDir.x);
         playerAnimator.SetFloat("ForwardMovement", localDir.z);
-        var temp = localDir;
+        // var temp = localDir;
+
         dir *= (moveSpeed) * Time.fixedDeltaTime * dashSpeed;
-        playerRigidbody.velocity = dir;
+        playerRigidbody.AddForce(dir);
+       // Debug.Log(dir);
+        //playerRigidbody.AddForce(dir * 10);
 
         //playerRigidbody.AddForce(dir);
-       // Debug.Log(dir);
+        // Debug.Log(dir);
         //localDir -= temp;
 
         //transform.Translate(localDir);
