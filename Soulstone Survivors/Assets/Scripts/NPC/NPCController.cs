@@ -158,6 +158,7 @@ public class NPCController : MonoBehaviour
         {
             animator.SetBool("Attack", true);
             animator.SetFloat("Forward", 0f);
+
         }
 
         if (animator.GetBool("AttackIdle"))
