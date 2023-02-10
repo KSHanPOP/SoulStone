@@ -25,7 +25,7 @@ public class AttacekdTakeDamage : MonoBehaviour, IAttackable
                 destructible.OnDestruction(attacker);
             }
         }
-        Debug.Log(stats.hp);
+        //Debug.Log(stats.hp);
     }
 
 }
