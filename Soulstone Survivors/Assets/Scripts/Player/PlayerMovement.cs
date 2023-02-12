@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody playerRigidbody;
     private Animator playerAnimator;
 
+    public Scanner scanner;
+
     private Vector3 inputMove;
 
     private Animation playerAnimation;
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
         playerAnimation = GetComponent<Animation>();
+        scanner= GetComponent<Scanner>();
     }
 
     private void FixedUpdate()
@@ -106,58 +109,6 @@ public class PlayerMovement : MonoBehaviour
         dir *= (moveSpeed) * Time.fixedDeltaTime * dashSpeed;
         playerRigidbody.AddForce(dir);
        // Debug.Log(dir);
-        //playerRigidbody.AddForce(dir * 10);
-
-        //playerRigidbody.AddForce(dir);
-        // Debug.Log(dir);
-        //localDir -= temp;
-
-        //transform.Translate(localDir);
-
-        // Debug.Log(localDir);
-        //if (localDir.x > 1f)
-        //{
-        //    var x = localDir;
-        //    x.x -= 1f;
-        //    x.y = 0f;
-        //    x.z = 0f;
-        //    transform.Translate(x);
-        //    Debug.Log(x);
-        //}
-        //if (localDir.x < -1f)
-        //{
-        //    var x = localDir;
-        //    x.x += 1f;
-        //    x.y = 0f;
-        //    x.z = 0f;
-
-        //    transform.Translate(x);
-        //    Debug.Log(x);
-        //}
-        //if (localDir.z > 1f)
-        //{
-
-        //    var z = localDir;
-        //    z.x = 0f;
-        //    z.y = 0f;
-        //    z.z -= 1f;
-        //    transform.Translate(z);
-        //    Debug.Log(z);
-        //}
-        //if (localDir.z < -1f)
-        //{
-
-        //    var z = localDir;
-        //    z.x = 0f;
-        //    z.y = 0f;
-        //    z.z += 1f;
-        //    Debug.Log(z);
-        //    transform.Translate(z);
-        //}
-        //transform.Translate(delta, Space.World);
-        //transform.Translate(delta, Space.World);
-        //playerRigidbody.MovePosition(playerRigidbody.transform.position + delta);
-        //playerAnimator.SetBool("Run", delta != Vector3.zero);
     }
 
     private void Rotate()

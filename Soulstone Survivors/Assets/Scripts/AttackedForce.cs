@@ -18,7 +18,7 @@ public class AttackedForce : MonoBehaviour, IAttackable
         dir.y += up;
         dir.Normalize();
         rigid.AddForce(dir * power, ForceMode.Impulse);
-        Debug.Log("hit");
+        //Debug.Log("hit");
         //rigid.MovePosition(dir*2);
         //rigid.velocity = dir * power;
     }

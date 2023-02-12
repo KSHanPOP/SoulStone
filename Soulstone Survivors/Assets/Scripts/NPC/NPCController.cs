@@ -239,7 +239,7 @@ public class NPCController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (!collision.CompareTag("FireboltSkill"))
+       // if (!collision.CompareTag("FireboltSkill"))
             return;
 
        // collision.GetComponent<FireboltSkill>().damage;

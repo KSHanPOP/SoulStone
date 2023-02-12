@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireboltSkill : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     public float damage;
     public int per;
+
     Rigidbody rb;
 
     private void Awake()
@@ -16,32 +17,27 @@ public class FireboltSkill : MonoBehaviour
     {
         this.damage = damage;
         this.per = per;
+
         if (per > -1)
         {
-            //rb.AddForce(dir);
             rb.velocity = dir * 15f;
         }
     }
 
-    private void Update()
-    {
-        Debug.Log(rb.velocity);
-    }
-
     private void OnTriggerEnter(Collider collider)
     {
-        //if (!collider.CompareTag("Enemy") || per == -1)
-        //{
-        //    return;
-        //}
+        if (!collider.CompareTag("Enemy") || per == -1)
+        {
+            return;
+        }
 
-        //per--;
+        per--;
 
-        //if (per == -1)
-        //{
-        //    rb.velocity = Vector3.zero;
-        //    gameObject.SetActive(false);
-        //}
+        if (per == -1)
+        {
+            rb.velocity = Vector3.zero;
+            gameObject.SetActive(false);
+        }
 
     }
 }
