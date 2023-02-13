@@ -82,6 +82,11 @@ public class NPCController : MonoBehaviour
         //var ev = player.GetComponent<DestructedEvent>();
         //ev.OnDie += OnPlayerDie;
     }
+    private void OnEnable()
+    {
+        State = States.Chase;
+    }
+
     public void OnPlayerDie()
     {
         State = States.GameOver;
@@ -262,6 +267,8 @@ public class NPCController : MonoBehaviour
     private void Dead()
     {
         GameManager.Instance.enemyCount--;
+        Transform stone = GameManager.Instance.stonePool.Get(0).transform;
+        stone.position = transform.position;
         gameObject.SetActive(false);
     }
 }

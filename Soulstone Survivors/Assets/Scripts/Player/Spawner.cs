@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer > spawnDelayTime && GameManager.Instance.enemyCount <= spawnMaxCount)
+        if (timer > spawnDelayTime && GameManager.Instance.enemyCount < spawnMaxCount)
         {
             timer = 0;
 

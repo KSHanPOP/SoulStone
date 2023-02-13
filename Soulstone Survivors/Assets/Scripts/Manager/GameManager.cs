@@ -6,8 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public ObjectpoolManager objectPool; 
+    public ObjectpoolManager objectPool;
     public SkillPool skillPool;
+    public StonePool stonePool;
+
     public GameObject player;
 
     public int maxEnemyCount;
