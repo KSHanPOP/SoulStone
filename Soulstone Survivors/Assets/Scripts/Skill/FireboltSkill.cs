@@ -6,6 +6,9 @@ public class FireboltSkill : MonoBehaviour
 {
     public float damage;
     public int per;
+    private float range;
+    public float maxRange = 0.5f;
+
     Rigidbody rb;
 
     private void Awake()
@@ -14,18 +17,24 @@ public class FireboltSkill : MonoBehaviour
     }
     public void Init(float damage, int per, Vector3 dir)
     {
+        range = maxRange;
         this.damage = damage;
         this.per = per;
         if (per > -1)
         {
-            //rb.AddForce(dir);
-            rb.velocity = dir * 15f;
+            rb.velocity = dir.normalized * 30f;
         }
     }
 
+
     private void Update()
     {
-        Debug.Log(rb.velocity);
+        range -= Time.deltaTime;
+
+        if (range < 0f)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider collider)

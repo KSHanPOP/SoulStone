@@ -7,11 +7,13 @@ public class AutoSkill : MonoBehaviour
 {
     public int id;
     public int prifabId;
-    public float damage;
+    public int damage;
     public int count;
     public float speed;
 
     private float timer;
+
+    private Vector3 tempPos;
 
     PlayerMovement player;
 
@@ -25,15 +27,19 @@ public class AutoSkill : MonoBehaviour
     {
         player = GetComponentInParent<PlayerMovement>();
     }
+    float angle = 0;
     private void Update()
     {
         switch (id)
         {
             case 0:
                 //transform.RotateAround(transform.position, Vector3.up, speed * Time.deltaTime);
-                transform.Rotate(Vector3.up * speed * Time.deltaTime);
+                //transform.Rotate(Vector3.up * speed * Time.deltaTime, Space.World);
+                angle += speed * Time.deltaTime;
+                transform.rotation = Quaternion.Euler(Vector3.up * angle);
                 break;
-            default:
+
+            case 1:
                 timer += Time.deltaTime;
                 if (timer > speed)
                 {
@@ -49,7 +55,7 @@ public class AutoSkill : MonoBehaviour
         }
         //Debug.Log(speed);
     }
-    public void LevelUp(float damege, int count)
+    public void LevelUp(int damege, int count)
     {
         this.damage = damege;
         this.count += count;
@@ -93,31 +99,6 @@ public class AutoSkill : MonoBehaviour
 
             bullet.GetComponent<ArcaneMissiles>().Init(damage, -1);
         }
-
-        //for (int index = 0; index < count; index++)
-        //{
-        //    Transform bullet;
-        //    if (index < transform.childCount)
-        //    {
-        //        bullet = transform.GetChild(index);
-        //    }
-        //    else
-        //    {
-        //        bullet = GameManager.Instance.skillPool.Get(prifabId).transform;
-        //        bullet.parent = transform;
-        //    }
-
-        //    bullet.localPosition= Vector3.zero;
-        //    bullet.localRotation= Quaternion.identity;
-
-
-        //    Debug.Log(transform.childCount);
-
-        //    Vector3 rotVec = Vector3.forward * 360 * index / count;
-        //    bullet.Rotate(rotVec);
-        //    bullet.Translate(bullet.up * 1.5f, Space.World);
-        //    bullet.GetComponent<ArcaneMissiles>().Init(damage, -1);
-        //}
     }
     private void Fire()
     {
@@ -125,12 +106,17 @@ public class AutoSkill : MonoBehaviour
         {
             return;
         }
+        else
+        {
+
+        }
 
         Vector3 targetPos = player.scanner.nearestTarget.position;
         Vector3 dir = targetPos - transform.position;
         dir = dir.normalized;
 
         Transform bullet = GameManager.Instance.skillPool.Get(prifabId).transform;
+        bullet.parent = transform;
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<FireboltSkill>().Init(damage, count, dir);

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 public class NPCController : MonoBehaviour
 {
@@ -123,8 +123,8 @@ public class NPCController : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(agent.remainingDistance< attackDef.range)
-       // if (distanceToPlayer < attackDef.range)
+        if (agent.remainingDistance < attackDef.range)
+        // if (distanceToPlayer < attackDef.range)
         {
             State = States.Attack;
             timer = 0f;
@@ -239,9 +239,29 @@ public class NPCController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-       // if (!collision.CompareTag("FireboltSkill"))
+        if (!collision.CompareTag("Bullet"))
             return;
 
-       // collision.GetComponent<FireboltSkill>().damage;
+        AutoSkill autoSkill = collision.gameObject.GetComponentInParent<AutoSkill>();
+
+        if (autoSkill != null)
+        {
+            stats.hp -= autoSkill.damage;
+        }
+
+        if (stats.hp > 0)
+        {
+
+        }
+        else
+        {
+            Dead();
+        }
+    }
+
+    private void Dead()
+    {
+        GameManager.Instance.enemyCount--;
+        gameObject.SetActive(false);
     }
 }

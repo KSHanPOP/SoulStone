@@ -7,21 +7,28 @@ public class Spawner : MonoBehaviour
 {
 
     public Transform[] spawnPoint;
+    public SpawnData[] spawnData;
+
     private float timer;
+    public float spawnDelayTime;
     private Vector3 RandomSpawnPoint;
+    private int spawnMaxCount;
     private void Awake()
     {
         spawnPoint = GetComponentsInChildren<Transform>();
+        spawnMaxCount = GameManager.Instance.maxEnemyCount;
     }
 
     void Update()
     {
         timer += Time.deltaTime;
 
-        if (timer > 1.2f)
+        if (timer > spawnDelayTime && GameManager.Instance.enemyCount <= spawnMaxCount)
         {
             timer = 0;
+
             Spawn();
+            GameManager.Instance.enemyCount++;
         }
 
         //if (Input.GetKeyUp(KeyCode.F))
@@ -41,6 +48,8 @@ public class Spawner : MonoBehaviour
             if (GetRandomPoint(spawnPoint[Random.Range(1, spawnPoint.Length)].position, 1f, out RandomSpawnPoint) && RandomSpawnPoint != Vector3.zero)
             {
                 GameObject enemy = GameManager.Instance.objectPool.Get(0);
+
+
 
                 enemy.transform.position = RandomSpawnPoint;
                 return;
@@ -64,4 +73,14 @@ public class Spawner : MonoBehaviour
         result = Vector3.zero;
         return false;
     }
+}
+
+
+[System.Serializable]
+public class SpawnData
+{
+    public int enemyType;
+    public float spawnTime;
+    public int health;
+    public float speed;
 }
