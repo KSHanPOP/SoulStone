@@ -10958,6 +10958,7 @@ GameObject:
   - component: {fileID: 8581201726195733290}
   - component: {fileID: 8581201726195733291}
   - component: {fileID: 7934691747649723538}
+  - component: {fileID: 3560335053897449856}
   m_Layer: 8
   m_Name: wolf
   m_TagString: Untagged
@@ -11088,6 +11089,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   up: 0
   power: 50000
+--- !u!114 &3560335053897449856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477572571861635812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c0f7d8fce6a4441b65786e33539371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitMaterial: {fileID: 2100000, guid: e1e6ce5b1cbbd6a4eae16a57c3a445e0, type: 2}
 --- !u!1 &8477576845969573776
 GameObject:
   m_ObjectHideFlags: 0

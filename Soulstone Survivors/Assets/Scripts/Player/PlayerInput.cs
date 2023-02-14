@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public string movevAxisName = "Vertical";
+    public string moveVAxisName = "Vertical";
     public string moveHAxisName = "Horizontal";
     public string dashName = "Dash";
     //public string fireButtonName = "Fire1";
@@ -37,13 +37,18 @@ public class PlayerInput : MonoBehaviour
             curRotation = rotation;
             transform.rotation = Quaternion.LookRotation(rotation);
         }
-        // moveV = Input.GetAxisRaw(movevAxisName);
-        // moveH = Input.GetAxisRaw(moveHAxisName);
-        // mousePos = Input.mousePosition;
+        //moveV = Input.GetAxisRaw(moveVAxisName);
+        //moveH = Input.GetAxisRaw(moveHAxisName);
+        //mousePos = Input.mousePosition;
 
         if (!dash)
         {
             dash = Input.GetButtonDown(dashName);
         }
+    }
+
+    public void OnClick()
+    {
+        dash = true;
     }
 }

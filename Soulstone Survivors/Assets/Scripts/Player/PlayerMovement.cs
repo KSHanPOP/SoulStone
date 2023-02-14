@@ -114,18 +114,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Rotate()
     {
-        //RaycastHit hit;
-        //Ray ray = Camera.main.ScreenPointToRay(playerInput.mousePos);
-        ////Debug.Log(playerInput.mousePos);
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(playerInput.mousePos);
 
-        //if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Floor")))
-        //{
-        //    var forward = hit.point - transform.position;
-        //    forward.y = 0f;
-        //    forward.Normalize();
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Floor")))
+        {
+            var forward = hit.point - transform.position;
+            forward.y = 0f;
+            forward.Normalize();
 
-        //    transform.rotation = Quaternion.LookRotation(forward);
-        //}
+            transform.rotation = Quaternion.LookRotation(forward);
+        }
     }
 
     IEnumerator Dashing()

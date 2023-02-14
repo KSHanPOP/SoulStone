@@ -29,6 +29,7 @@ public class AttackedForce : MonoBehaviour, IAttackable
         dir.y += up;
         dir.Normalize();
         rigid.AddForce(dir * power, ForceMode.Impulse);
+
     }
 
     private void Update()

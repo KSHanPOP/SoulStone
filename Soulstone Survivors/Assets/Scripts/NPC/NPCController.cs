@@ -251,7 +251,7 @@ public class NPCController : MonoBehaviour
         if (!collision.CompareTag("Bullet"))
             return;
 
-        AutoSkill autoSkill = collision.gameObject.GetComponent<AutoSkill>();
+        AutoSkill autoSkill = collision.gameObject.GetComponentInParent<AutoSkill>();
         AttackedForce attackedForce = gameObject.GetComponent<AttackedForce>(); ;
         attackedForce.OnAttack(player.transform);
 
