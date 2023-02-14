@@ -38,8 +38,6 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-
-
         // GetRandomPoint()
 
         // enemy.transform.position;
@@ -48,8 +46,6 @@ public class Spawner : MonoBehaviour
             if (GetRandomPoint(spawnPoint[Random.Range(1, spawnPoint.Length)].position, 1f, out RandomSpawnPoint) && RandomSpawnPoint != Vector3.zero)
             {
                 GameObject enemy = GameManager.Instance.objectPool.Get(0);
-
-
 
                 enemy.transform.position = RandomSpawnPoint;
                 return;

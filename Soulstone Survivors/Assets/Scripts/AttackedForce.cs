@@ -23,6 +23,14 @@ public class AttackedForce : MonoBehaviour, IAttackable
         //rigid.velocity = dir * power;
     }
 
+    public void OnAttack(Transform attacker)
+    {
+        var dir = transform.position - attacker.transform.position;
+        dir.y += up;
+        dir.Normalize();
+        rigid.AddForce(dir * power, ForceMode.Impulse);
+    }
+
     private void Update()
     {
 

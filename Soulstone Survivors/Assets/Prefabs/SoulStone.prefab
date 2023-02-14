@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exp: 1
   speed: 20
-  rotateSpeed: 10
+  rotateSpeed: 15
   explosionRadius: 1
   explosionForce: 500
   distance: 3

@@ -85,6 +85,7 @@ public class NPCController : MonoBehaviour
     private void OnEnable()
     {
         State = States.Chase;
+        agent.ResetPath();
     }
 
     public void OnPlayerDie()
@@ -94,6 +95,7 @@ public class NPCController : MonoBehaviour
     private void Start()
     {
         State = States.Chase;
+        timer = 1f;
 
     }
 
@@ -119,7 +121,9 @@ public class NPCController : MonoBehaviour
         }
 
         if (States.Chase == state)
+        {
             animator.SetFloat("Forward", agent.velocity.magnitude);
+        }
 
         //Debug.Log(state);
     }
@@ -129,20 +133,19 @@ public class NPCController : MonoBehaviour
         timer += Time.deltaTime;
 
         if (agent.remainingDistance < attackDef.range)
-        // if (distanceToPlayer < attackDef.range)
+        { }
+        if (distanceToPlayer-0.5 < attackDef.range)
         {
             State = States.Attack;
             timer = 0f;
-
             return;
         }
 
         if (timer > chaseInterval)
         {
-            agent.SetDestination(player.position);
             timer = 0f;
+            agent.SetDestination(player.position);
             return;
-
         }
     }
 
@@ -242,12 +245,15 @@ public class NPCController : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter(Collider collision)
     {
         if (!collision.CompareTag("Bullet"))
             return;
 
-        AutoSkill autoSkill = collision.gameObject.GetComponentInParent<AutoSkill>();
+        AutoSkill autoSkill = collision.gameObject.GetComponent<AutoSkill>();
+        AttackedForce attackedForce = gameObject.GetComponent<AttackedForce>(); ;
+        attackedForce.OnAttack(player.transform);
 
         if (autoSkill != null)
         {

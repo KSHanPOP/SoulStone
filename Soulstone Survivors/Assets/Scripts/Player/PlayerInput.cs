@@ -14,12 +14,32 @@ public class PlayerInput : MonoBehaviour
     public bool dash { get; set; }
     public Vector3 mousePos { get; private set; }
 
+    public FixedJoystick moveJoy;
+    public FixedJoystick dirJoy;
+    Vector3 rotation;
+    Vector3 curRotation;
+
 
     void Update()
     {
-        moveV = Input.GetAxisRaw(movevAxisName);
-        moveH = Input.GetAxisRaw(moveHAxisName);
-        mousePos = Input.mousePosition;
+        //Input.GetKey(KeyCode.Escape);
+
+
+        moveH = moveJoy.Horizontal;
+        moveV = moveJoy.Vertical;
+        rotation = new Vector3(dirJoy.Horizontal, 0, dirJoy.Vertical);
+        if (rotation == Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(curRotation);
+        }
+        else
+        {
+            curRotation = rotation;
+            transform.rotation = Quaternion.LookRotation(rotation);
+        }
+        // moveV = Input.GetAxisRaw(movevAxisName);
+        // moveH = Input.GetAxisRaw(moveHAxisName);
+        // mousePos = Input.mousePosition;
 
         if (!dash)
         {
