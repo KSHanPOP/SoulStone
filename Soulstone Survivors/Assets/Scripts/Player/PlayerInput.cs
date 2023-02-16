@@ -1,3 +1,5 @@
+//#define MOBILE_PLATFORM
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,8 +25,7 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         //Input.GetKey(KeyCode.Escape);
-
-
+#if MOBILE_PLATFORM
         moveH = moveJoy.Horizontal;
         moveV = moveJoy.Vertical;
         rotation = new Vector3(dirJoy.Horizontal, 0, dirJoy.Vertical);
@@ -37,14 +38,16 @@ public class PlayerInput : MonoBehaviour
             curRotation = rotation;
             transform.rotation = Quaternion.LookRotation(rotation);
         }
-        //moveV = Input.GetAxisRaw(moveVAxisName);
-        //moveH = Input.GetAxisRaw(moveHAxisName);
-        //mousePos = Input.mousePosition;
+#else
+        moveV = Input.GetAxisRaw(moveVAxisName);
+        moveH = Input.GetAxisRaw(moveHAxisName);
+        mousePos = Input.mousePosition;
 
         if (!dash)
         {
             dash = Input.GetButtonDown(dashName);
         }
+#endif
     }
 
     public void OnClick()

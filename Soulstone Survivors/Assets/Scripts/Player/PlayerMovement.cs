@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
         playerAnimation = GetComponent<Animation>();
-        scanner= GetComponent<Scanner>();
+        scanner = GetComponent<Scanner>();
     }
 
     private void FixedUpdate()
@@ -39,7 +39,11 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Dashing());
         }
 
+#if MOBILE_PLATFORM
+#else
         Rotate();
+#endif
+
     }
 
     //private void OnAnimatorMove()
@@ -109,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
         dir *= (moveSpeed) * Time.fixedDeltaTime * dashSpeed;
         playerRigidbody.AddForce(dir);
-       // Debug.Log(dir);
+        // Debug.Log(dir);
     }
 
     private void Rotate()
